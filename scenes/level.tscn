@@ -1,8 +1,8 @@
 [gd_scene load_steps=34 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
-[ext_resource type="Texture2D" uid="uid://roxl3jjmgdap" path="res://images/background-kokkaigijidou.png" id="2_iwkfr"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
+[ext_resource type="Texture2D" uid="uid://dbbaqhksjvd8k" path="res://images/background-kokkaigijidou-s.png" id="2_xspyh"]
 [ext_resource type="Texture2D" uid="uid://bh5tav07a642n" path="res://Player Jab 48x48.png" id="4_pgvmg"]
 [ext_resource type="Texture2D" uid="uid://b68mp5pds0h6j" path="res://Player Idle 48x48.png" id="5_5wd0t"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
@@ -202,9 +202,9 @@ autoplay = true
 anchor_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 960.0
-offset_bottom = 540.0
-texture = ExtResource("2_iwkfr")
+offset_right = 256.0
+offset_bottom = 144.0
+texture = ExtResource("2_xspyh")
 expand_mode = 1
 
 [node name="Game" type="Node" parent="."]
