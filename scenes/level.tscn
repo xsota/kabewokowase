@@ -1,33 +1,160 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=34 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Texture2D" uid="uid://roxl3jjmgdap" path="res://images/background-kokkaigijidou.png" id="2_iwkfr"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
-[ext_resource type="Texture2D" uid="uid://dvc3kk5hxg788" path="res://90.png" id="3_2vbse"]
-[ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="4_o1g84"]
+[ext_resource type="Texture2D" uid="uid://bh5tav07a642n" path="res://Player Jab 48x48.png" id="4_pgvmg"]
+[ext_resource type="Texture2D" uid="uid://b68mp5pds0h6j" path="res://Player Idle 48x48.png" id="5_5wd0t"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
 [ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
 [ext_resource type="Texture2D" uid="uid://b8hofi2we13up" path="res://25.png" id="7_hseq1"]
 [ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
 [ext_resource type="Texture2D" uid="uid://bqlwuiygc6rgl" path="res://89.png" id="9_8xpyu"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_blch7"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxq00"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gvhs"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b0ko"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32xiy"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8deq"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0akas"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scehh"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xxxx"]
+atlas = ExtResource("4_pgvmg")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6dpt"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngdx6"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u43vk"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnaex"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0xpe"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piswr"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nik00"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2husr"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1yxo"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiic7"]
+atlas = ExtResource("5_5wd0t")
+region = Rect2(432, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dhw0t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_2vbse")
+"texture": SubResource("AtlasTexture_blch7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxq00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gvhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8b0ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32xiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8deq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0akas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scehh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xxxx")
 }],
 "loop": false,
 "name": &"attack",
-"speed": 4.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_o1g84")
+"texture": SubResource("AtlasTexture_c6dpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngdx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u43vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnaex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0xpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piswr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nik00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2husr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1yxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiic7")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_7hdn3"]
@@ -84,10 +211,10 @@ expand_mode = 1
 script = ExtResource("2_jhuyf")
 
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
-position = Vector2(219, 384)
-scale = Vector2(3.36719, 3.36719)
+position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
 animation = &"attack"
+frame = 8
 frame_progress = 1.0
 script = SubResource("GDScript_7hdn3")
 
@@ -98,16 +225,15 @@ stream = SubResource("AudioStreamRandomizer_l6thv")
 volume_db = -0.5
 
 [node name="Wall" type="AnimatedSprite2D" parent="Game"]
-position = Vector2(718, 317)
-scale = Vector2(4.25781, 4.25781)
+position = Vector2(174, 76)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 script = ExtResource("8_gsmq8")
 
 [node name="HpBar" type="TextureProgressBar" parent="Game/Wall"]
-offset_left = -18.789
-offset_top = -52.3743
-offset_right = 109.211
-offset_bottom = 75.6257
+offset_left = -9.0
+offset_top = -49.0
+offset_right = 119.0
+offset_bottom = 79.0
 value = 80.0
 fill_mode = 3
 texture_progress = ExtResource("9_8xpyu")

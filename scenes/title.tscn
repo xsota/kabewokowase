@@ -35,18 +35,18 @@ stretch_mode = 6
 
 [node name="StartButton" type="TextureButton" parent="Control"]
 layout_mode = 2
-offset_left = 416.0
-offset_top = 232.0
-offset_right = 544.0
-offset_bottom = 360.0
+offset_left = 53.0
+offset_top = 33.0
+offset_right = 181.0
+offset_bottom = 161.0
 texture_normal = ExtResource("3_qpvg5")
 
 [node name="TitleLabel" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 832.0
-offset_bottom = 256.0
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 259.0
+offset_bottom = 62.0
 theme = SubResource("Theme_ofckn")
 text = "かべをこわすんだぞ"
 label_settings = SubResource("LabelSettings_xcrao")
