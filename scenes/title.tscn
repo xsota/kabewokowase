@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://vq0c1v6msytc"]
+
+[ext_resource type="Script" path="res://scripts/title.gd" id="1_nimm8"]
+[ext_resource type="AudioStream" uid="uid://bmxj8ca8qix2h" path="res://sounds/ほんわかぷっぷー.mp3" id="2_lpw2i"]
+[ext_resource type="Texture2D" uid="uid://dllxa2nmjulee" path="res://36_20240329141526.png" id="2_qk4bk"]
+[ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="3_qpvg5"]
+[ext_resource type="FontFile" uid="uid://dm5chb6thc8xh" path="res://fonts/x12y16pxMaruMonica.ttf" id="4_tpkat"]
+
+[sub_resource type="Theme" id="Theme_ofckn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcrao"]
+font = ExtResource("4_tpkat")
+font_size = 32
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_nimm8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(416, 232)
+stream = ExtResource("2_lpw2i")
+autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 1280.0
+texture = ExtResource("2_qk4bk")
+stretch_mode = 6
+
+[node name="StartButton" type="TextureButton" parent="Control"]
+layout_mode = 2
+offset_left = 416.0
+offset_top = 232.0
+offset_right = 544.0
+offset_bottom = 360.0
+texture_normal = ExtResource("3_qpvg5")
+
+[node name="TitleLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 256.0
+theme = SubResource("Theme_ofckn")
+text = "かべをこわすんだぞ"
+label_settings = SubResource("LabelSettings_xcrao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://cw7kyly4dsfm4"]
+
+[ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
+[ext_resource type="Texture2D" uid="uid://roxl3jjmgdap" path="res://images/background-kokkaigijidou.png" id="2_iwkfr"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
+[ext_resource type="Texture2D" uid="uid://dvc3kk5hxg788" path="res://90.png" id="3_2vbse"]
+[ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="4_o1g84"]
+[ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
+[ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
+[ext_resource type="Texture2D" uid="uid://b8hofi2we13up" path="res://25.png" id="7_hseq1"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
+[ext_resource type="Texture2D" uid="uid://bqlwuiygc6rgl" path="res://89.png" id="9_8xpyu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhw0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2vbse")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o1g84")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_7hdn3"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l6thv"]
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 0.5
+streams_count = 2
+stream_0/stream = ExtResource("5_f8mp8")
+stream_0/weight = 5.0
+stream_1/stream = ExtResource("6_g3dqy")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2xqm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hseq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Level" type="Node2D"]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_j7x83")
+volume_db = -8.0
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 960.0
+offset_bottom = 540.0
+texture = ExtResource("2_iwkfr")
+expand_mode = 1
+
+[node name="Game" type="Node" parent="."]
+script = ExtResource("2_jhuyf")
+
+[node name="Character" type="AnimatedSprite2D" parent="Game"]
+position = Vector2(219, 384)
+scale = Vector2(3.36719, 3.36719)
+sprite_frames = SubResource("SpriteFrames_dhw0t")
+animation = &"attack"
+frame_progress = 1.0
+script = SubResource("GDScript_7hdn3")
+
+[node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
+position = Vector2(-68.9002, -134.237)
+scale = Vector2(0.296984, 0.296984)
+stream = SubResource("AudioStreamRandomizer_l6thv")
+volume_db = -0.5
+
+[node name="Wall" type="AnimatedSprite2D" parent="Game"]
+position = Vector2(718, 317)
+scale = Vector2(4.25781, 4.25781)
+sprite_frames = SubResource("SpriteFrames_k2xqm")
+script = ExtResource("8_gsmq8")
+
+[node name="HpBar" type="TextureProgressBar" parent="Game/Wall"]
+offset_left = -18.789
+offset_top = -52.3743
+offset_right = 109.211
+offset_bottom = 75.6257
+value = 80.0
+fill_mode = 3
+texture_progress = ExtResource("9_8xpyu")
