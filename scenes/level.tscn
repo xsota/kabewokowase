@@ -1,14 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=26 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
 [ext_resource type="Texture2D" uid="uid://dbbaqhksjvd8k" path="res://images/background-kokkaigijidou-s.png" id="2_xspyh"]
+[ext_resource type="AudioStream" uid="uid://ce1363tx51aqf" path="res://sounds/決定ボタンを押す2.mp3" id="3_as7pr"]
 [ext_resource type="Texture2D" uid="uid://bh5tav07a642n" path="res://Player Jab 48x48.png" id="4_pgvmg"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
 [ext_resource type="Texture2D" uid="uid://u8p4wp7cohti" path="res://images/kon-dots2.png" id="5_lohlq"]
 [ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
 [ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
 [ext_resource type="Texture2D" uid="uid://bjn41tdlxcu6e" path="res://images/block.png" id="8_vponx"]
+[ext_resource type="FontFile" uid="uid://dm5chb6thc8xh" path="res://fonts/x12y16pxMaruMonica.ttf" id="10_hysjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_blch7"]
 atlas = ExtResource("4_pgvmg")
@@ -123,17 +125,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_v5npo"]
+font = ExtResource("10_hysjp")
+outline_size = 4
+outline_color = Color(0.10748, 0.10748, 0.10748, 1)
+shadow_size = 0
 
-[node name="BGM" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_j7x83")
-volume_db = -8.0
-autoplay = true
+[node name="Level" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
+top_level = true
 offset_right = 256.0
 offset_bottom = 144.0
 texture = ExtResource("2_xspyh")
@@ -142,10 +146,20 @@ expand_mode = 1
 [node name="Game" type="Node" parent="."]
 script = ExtResource("2_jhuyf")
 
+[node name="StartTimer" type="Timer" parent="Game"]
+autostart = true
+
+[node name="SE" type="AudioStreamPlayer2D" parent="Game/StartTimer"]
+stream = ExtResource("3_as7pr")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="Game"]
+stream = ExtResource("1_j7x83")
+volume_db = -8.0
+
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
 position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
-frame_progress = 0.187736
+frame_progress = 0.540225
 script = SubResource("GDScript_7hdn3")
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
@@ -165,3 +179,21 @@ script = ExtResource("8_gsmq8")
 position = Vector2(118, 83)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 script = ExtResource("8_gsmq8")
+
+[node name="UI" type="Control" parent="Game"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 144.0
+
+[node name="StartCountDownLabel" type="Label" parent="Game/UI"]
+top_level = true
+clip_children = 2
+offset_right = 256.0
+offset_bottom = 144.0
+text = "3"
+label_settings = SubResource("LabelSettings_v5npo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
