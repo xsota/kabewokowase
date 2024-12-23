@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=27 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
@@ -131,6 +131,9 @@ outline_size = 4
 outline_color = Color(0.10748, 0.10748, 0.10748, 1)
 shadow_size = 0
 
+[sub_resource type="LabelSettings" id="LabelSettings_draa8"]
+font = ExtResource("10_hysjp")
+
 [node name="Level" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -159,7 +162,7 @@ volume_db = -8.0
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
 position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
-frame_progress = 0.540225
+frame_progress = 0.906705
 script = SubResource("GDScript_7hdn3")
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
@@ -195,5 +198,14 @@ text = "3"
 label_settings = SubResource("LabelSettings_v5npo")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScoreTimeLabel" type="Label" parent="Game/UI"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 255.0
+offset_bottom = 17.0
+label_settings = SubResource("LabelSettings_draa8")
+horizontal_alignment = 2
 
 [connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
