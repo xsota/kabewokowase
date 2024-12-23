@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=28 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
 [ext_resource type="Texture2D" uid="uid://dbbaqhksjvd8k" path="res://images/background-kokkaigijidou-s.png" id="2_xspyh"]
 [ext_resource type="AudioStream" uid="uid://ce1363tx51aqf" path="res://sounds/決定ボタンを押す2.mp3" id="3_as7pr"]
+[ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="4_o1g84"]
 [ext_resource type="Texture2D" uid="uid://bh5tav07a642n" path="res://Player Jab 48x48.png" id="4_pgvmg"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
 [ext_resource type="Texture2D" uid="uid://u8p4wp7cohti" path="res://images/kon-dots2.png" id="5_lohlq"]
@@ -118,6 +119,14 @@ stream_1/stream = ExtResource("6_g3dqy")
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_o1g84")
+}],
+"loop": false,
+"name": &"break",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_vponx")
 }],
 "loop": true,
@@ -162,7 +171,7 @@ volume_db = -8.0
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
 position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
-frame_progress = 0.906705
+frame_progress = 0.569336
 script = SubResource("GDScript_7hdn3")
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
@@ -173,15 +182,13 @@ volume_db = -0.5
 
 [node name="GroupWall" type="Node2D" parent="Game"]
 
-[node name="Wall2" type="AnimatedSprite2D" parent="Game/GroupWall"]
-position = Vector2(163, 83)
+[node name="Wall" type="AnimatedSprite2D" parent="Game/GroupWall"]
+position = Vector2(111, 89)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
+animation = &"break"
 script = ExtResource("8_gsmq8")
 
-[node name="Wall" type="AnimatedSprite2D" parent="Game/GroupWall"]
-position = Vector2(118, 83)
-sprite_frames = SubResource("SpriteFrames_k2xqm")
-script = ExtResource("8_gsmq8")
+[node name="SE" type="AudioStreamPlayer2D" parent="Game/GroupWall/Wall"]
 
 [node name="UI" type="Control" parent="Game"]
 layout_mode = 3
@@ -199,6 +206,15 @@ label_settings = SubResource("LabelSettings_v5npo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ResultsLabel" type="Label" parent="Game/UI"]
+top_level = true
+clip_children = 2
+offset_right = 256.0
+offset_bottom = 144.0
+label_settings = SubResource("LabelSettings_v5npo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScoreTimeLabel" type="Label" parent="Game/UI"]
 layout_mode = 0
 offset_left = 2.0
@@ -209,3 +225,4 @@ label_settings = SubResource("LabelSettings_draa8")
 horizontal_alignment = 2
 
 [connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
+[connection signal="animation_finished" from="Game/GroupWall/Wall" to="Game/GroupWall/Wall" method="_on_animation_finished"]

@@ -17,7 +17,12 @@ func _process(delta: float) -> void:
 	if is_game:
 		score_time += delta
 		$UI/ScoreTimeLabel.text = "Time: %.2f" % score_time
-
+		
+	if $GroupWall.get_child_count() == 0:
+		is_game = false
+		$BGM.stop();
+		$UI/ScoreTimeLabel.hide()
+		$UI/ResultsLabel.text = "%.2f秒で\n103万の壁たちを壊した！" % score_time
 
 func _input(event: InputEvent) -> void:
 	if !is_game:
