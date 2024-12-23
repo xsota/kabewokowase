@@ -99,7 +99,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 "
 
@@ -145,7 +145,7 @@ script = ExtResource("2_jhuyf")
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
 position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
-frame_progress = 0.200012
+frame_progress = 0.187736
 script = SubResource("GDScript_7hdn3")
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
@@ -157,11 +157,11 @@ volume_db = -0.5
 [node name="GroupWall" type="Node2D" parent="Game"]
 
 [node name="Wall2" type="AnimatedSprite2D" parent="Game/GroupWall"]
-position = Vector2(161, 79)
+position = Vector2(163, 83)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 script = ExtResource("8_gsmq8")
 
 [node name="Wall" type="AnimatedSprite2D" parent="Game/GroupWall"]
-position = Vector2(119, 80)
+position = Vector2(118, 83)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 script = ExtResource("8_gsmq8")
