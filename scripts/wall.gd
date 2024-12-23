@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-var current_hp:int = 100;
+@export var current_hp:int = 10;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +13,6 @@ func _process(delta: float) -> void:
 
 func damage(value: int):
 	current_hp -= value
-	$HpBar.value = current_hp
+	if current_hp < 0:
+		queue_free()
+		
