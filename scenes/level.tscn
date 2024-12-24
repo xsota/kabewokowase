@@ -1,83 +1,58 @@
-[gd_scene load_steps=28 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=24 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
 [ext_resource type="Texture2D" uid="uid://dbbaqhksjvd8k" path="res://images/background-kokkaigijidou-s.png" id="2_xspyh"]
 [ext_resource type="AudioStream" uid="uid://ce1363tx51aqf" path="res://sounds/決定ボタンを押す2.mp3" id="3_as7pr"]
 [ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="4_o1g84"]
-[ext_resource type="Texture2D" uid="uid://bh5tav07a642n" path="res://Player Jab 48x48.png" id="4_pgvmg"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
-[ext_resource type="Texture2D" uid="uid://u8p4wp7cohti" path="res://images/kon-dots2.png" id="5_lohlq"]
+[ext_resource type="Texture2D" uid="uid://dkk1u2kdkj8yv" path="res://images/kon-punch.png" id="5_ydh20"]
 [ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
 [ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
 [ext_resource type="Texture2D" uid="uid://bjn41tdlxcu6e" path="res://images/block.png" id="8_vponx"]
 [ext_resource type="FontFile" uid="uid://dm5chb6thc8xh" path="res://fonts/x12y16pxMaruMonica.ttf" id="10_hysjp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_blch7"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(48, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw24v"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(0, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qxq00"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(96, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6eoa"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(36, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gvhs"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(144, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb05p"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(72, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8b0ko"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(192, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_16d7i"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(108, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_32xiy"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(240, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq56b"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(144, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8deq"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(288, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0akas"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(336, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_scehh"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xxxx"]
-atlas = ExtResource("4_pgvmg")
-region = Rect2(432, 0, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb2fe"]
+atlas = ExtResource("5_ydh20")
+region = Rect2(0, 0, 36, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dhw0t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_blch7")
+"texture": SubResource("AtlasTexture_bw24v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qxq00")
+"texture": SubResource("AtlasTexture_i6eoa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7gvhs")
+"texture": SubResource("AtlasTexture_rb05p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8b0ko")
+"texture": SubResource("AtlasTexture_16d7i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_32xiy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8deq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0akas")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_scehh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xxxx")
+"texture": SubResource("AtlasTexture_lq56b")
 }],
 "loop": false,
 "name": &"attack",
@@ -85,7 +60,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_lohlq")
+"texture": SubResource("AtlasTexture_eb2fe")
 }],
 "loop": true,
 "name": &"default",
@@ -171,7 +146,9 @@ volume_db = -8.0
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
 position = Vector2(48, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
-frame_progress = 0.569336
+animation = &"attack"
+frame = 4
+frame_progress = 1.0
 script = SubResource("GDScript_7hdn3")
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/Character"]
@@ -187,6 +164,7 @@ position = Vector2(111, 89)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 animation = &"break"
 script = ExtResource("8_gsmq8")
+current_hp = 1000
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/GroupWall/Wall"]
 
