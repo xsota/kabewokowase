@@ -150,13 +150,13 @@ volume_db = -0.5
 [node name="GroupWall" type="Node2D" parent="Game"]
 
 [node name="Wall178" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
-position = Vector2(218, 82)
+position = Vector2(215, 82)
 sprite_frames = ExtResource("9_n2j4q")
 animation = &"default"
 max_hp = 178.0
 
 [node name="Wall123" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
-position = Vector2(158, 82)
+position = Vector2(157, 82)
 max_hp = 123.0
 
 [node name="Wall103" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]

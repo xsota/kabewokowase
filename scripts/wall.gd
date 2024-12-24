@@ -8,6 +8,7 @@ func _ready() -> void:
 	current_hp = max_hp
 	self.play("default")
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -22,7 +23,7 @@ func damage(value: int) -> void:
 		
 	# HP割合を計算
 	var hp_percentage = current_hp / max_hp
-	print(hp_percentage)
+	#print(hp_percentage)
 	# HPに応じてアニメーションを再生
 	if current_hp <= 0:
 		broken()
@@ -38,7 +39,6 @@ func damage(value: int) -> void:
 		play("2")
 	elif hp_percentage <= 0.9:
 		play("1")
-	
 
 
 func _on_animation_finished() -> void:

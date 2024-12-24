@@ -34,11 +34,12 @@ func _input(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("attack"):
 		$Character.play("attack")
-		$Character/SE.play()
+		$Character/SE.play()	
 		
 		var wall = get_first_wall()
 		if wall != null:
 			wall.damage(1)
+			shake_node(wall)
 	
 	else:
 		$Character.play("default")
@@ -56,6 +57,26 @@ func get_first_wall():
 		else:
 			return w
 
+func shake_node(target: Node2D, intensity: float = 1, duration: float = 0.1) -> void:
+	var tween = get_tree().create_tween()  # Tweenを作成
+	var original_position = target.position  # 元の位置を記録
+	
+	# シェイクアニメーションを追加
+	for i in range(int(duration / 0.1)):  # 揺れる回数を計算（0.1秒ごと）
+		var random_offset = Vector2(
+			randf_range(-intensity, intensity),
+			randf_range(-intensity, intensity)
+		)
+		# ランダムな位置に移動
+		tween.tween_property(
+			target, "position", original_position + random_offset, 0.05
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
+		# 元の位置に戻る
+		tween.tween_property(
+			target, "position", original_position, 0.05
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
 
 func _on_start_timer_timeout() -> void:
 	start_count -= 1;
