@@ -91,7 +91,7 @@ animation = &"4"
 [node name="Kon" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(73, 107)
 sprite_frames = SubResource("SpriteFrames_1o51p")
-frame_progress = 0.0997501
+frame_progress = 0.367612
 script = ExtResource("6_4yiqa")
 
 [node name="StartButton" type="Button" parent="Control"]

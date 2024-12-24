@@ -33,17 +33,15 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if event.is_action_pressed("attack"):
+		$Character.play("default")
 		$Character.play("attack")
-		$Character/SE.play()	
+		$Character/SE.play()
 		
 		var wall = get_first_wall()
 		if wall != null:
 			wall.damage(1)
 			shake_node(wall)
 	
-	else:
-		$Character.play("default")
-
 
 func get_first_wall():
 	var index = $GroupWall.get_child_count()-1
