@@ -165,7 +165,6 @@ sprite_frames = ExtResource("9_ogx1h")
 max_hp = 103.0
 
 [node name="UI" type="Control" parent="Game"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
