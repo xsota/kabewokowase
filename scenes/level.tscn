@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=33 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
@@ -89,7 +89,27 @@ stream_0/stream = ExtResource("5_f8mp8")
 stream_0/weight = 5.0
 stream_1/stream = ExtResource("6_g3dqy")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2ila"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mirg"]
+atlas = ExtResource("8_vponx")
+region = Rect2(80, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76mrt"]
+atlas = ExtResource("8_vponx")
+region = Rect2(160, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01tng"]
+atlas = ExtResource("8_vponx")
+region = Rect2(240, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmo3d"]
+atlas = ExtResource("8_vponx")
+region = Rect2(320, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bst2e"]
+atlas = ExtResource("8_vponx")
+region = Rect2(400, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubydc"]
 atlas = ExtResource("8_vponx")
 region = Rect2(480, 0, 80, 110)
 
@@ -109,8 +129,53 @@ region = Rect2(0, 0, 80, 110)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s2ila")
+"texture": SubResource("AtlasTexture_8mirg")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76mrt")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01tng")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmo3d")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bst2e")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubydc")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_itb6c")
 }, {
@@ -119,7 +184,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"break",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -138,6 +203,11 @@ shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_draa8"]
 font = ExtResource("10_hysjp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e7ns3"]
+font = ExtResource("10_hysjp")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Node2D"]
 
@@ -161,7 +231,7 @@ autostart = true
 stream = ExtResource("3_as7pr")
 
 [node name="TitleButtonTimer" type="Timer" parent="Game"]
-wait_time = 2.0
+wait_time = 4.0
 one_shot = true
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="Game"]
@@ -188,7 +258,7 @@ volume_db = -0.5
 position = Vector2(111, 89)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 animation = &"break"
-frame = 2
+frame = 1
 frame_progress = 1.0
 script = ExtResource("8_gsmq8")
 
@@ -228,16 +298,17 @@ offset_bottom = 17.0
 label_settings = SubResource("LabelSettings_draa8")
 horizontal_alignment = 2
 
-[node name="TitleGoButton" type="Button" parent="Game/UI"]
+[node name="TitleGoButton" type="Label" parent="Game/UI"]
 layout_mode = 0
 offset_left = 185.0
 offset_top = 115.0
 offset_right = 251.0
 offset_bottom = 139.0
-theme_override_fonts/font = ExtResource("10_hysjp")
 text = "Titleに戻る"
+label_settings = SubResource("LabelSettings_e7ns3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Game/TitleButtonTimer" to="Game" method="_on_title_button_timer_timeout"]
 [connection signal="animation_finished" from="Game/GroupWall/Wall" to="Game/GroupWall/Wall" method="_on_animation_finished"]
-[connection signal="pressed" from="Game/UI/TitleGoButton" to="Game" method="_on_title_go_button_pressed"]
