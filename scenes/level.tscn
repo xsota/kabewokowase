@@ -134,7 +134,7 @@ stream = ExtResource("1_j7x83")
 volume_db = -8.0
 
 [node name="Character" type="AnimatedSprite2D" parent="Game"]
-position = Vector2(48, 111)
+position = Vector2(45, 111)
 sprite_frames = SubResource("SpriteFrames_dhw0t")
 animation = &"attack"
 frame = 4
@@ -153,18 +153,19 @@ volume_db = -0.5
 position = Vector2(218, 82)
 sprite_frames = ExtResource("9_n2j4q")
 animation = &"default"
-max_hp = 10.0
+max_hp = 178.0
 
 [node name="Wall123" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
 position = Vector2(158, 82)
-max_hp = 10.0
+max_hp = 123.0
 
 [node name="Wall103" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
-position = Vector2(96, 82)
+position = Vector2(99, 82)
 sprite_frames = ExtResource("9_ogx1h")
-max_hp = 10.0
+max_hp = 103.0
 
 [node name="UI" type="Control" parent="Game"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
@@ -223,10 +224,10 @@ vertical_alignment = 1
 
 [node name="ScoreTimeLabel" type="Label" parent="Game/UI"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 15.0
-offset_right = 282.0
-offset_bottom = 31.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 255.0
+offset_bottom = 17.0
 label_settings = SubResource("LabelSettings_draa8")
 horizontal_alignment = 2
 
