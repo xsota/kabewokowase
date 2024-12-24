@@ -1,15 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=27 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
 [ext_resource type="Texture2D" uid="uid://dbbaqhksjvd8k" path="res://images/background-kokkaigijidou-s.png" id="2_xspyh"]
 [ext_resource type="AudioStream" uid="uid://ce1363tx51aqf" path="res://sounds/決定ボタンを押す2.mp3" id="3_as7pr"]
-[ext_resource type="Texture2D" uid="uid://d4j7qnghjdyys" path="res://88.png" id="4_o1g84"]
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
 [ext_resource type="Texture2D" uid="uid://dkk1u2kdkj8yv" path="res://images/kon-punch.png" id="5_ydh20"]
 [ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
 [ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
-[ext_resource type="Texture2D" uid="uid://bjn41tdlxcu6e" path="res://images/block.png" id="8_vponx"]
+[ext_resource type="Texture2D" uid="uid://uwh5yhnqwg6h" path="res://images/block.png" id="8_vponx"]
 [ext_resource type="FontFile" uid="uid://dm5chb6thc8xh" path="res://fonts/x12y16pxMaruMonica.ttf" id="10_hysjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bw24v"]
@@ -90,19 +89,41 @@ stream_0/stream = ExtResource("5_f8mp8")
 stream_0/weight = 5.0
 stream_1/stream = ExtResource("6_g3dqy")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ila"]
+atlas = ExtResource("8_vponx")
+region = Rect2(480, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itb6c"]
+atlas = ExtResource("8_vponx")
+region = Rect2(560, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0wa0"]
+atlas = ExtResource("8_vponx")
+region = Rect2(640, 0, 80, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v488"]
+atlas = ExtResource("8_vponx")
+region = Rect2(0, 0, 80, 110)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2xqm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_o1g84")
+"texture": SubResource("AtlasTexture_s2ila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itb6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0wa0")
 }],
 "loop": false,
 "name": &"break",
-"speed": 1.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_vponx")
+"texture": SubResource("AtlasTexture_0v488")
 }],
 "loop": true,
 "name": &"default",
@@ -139,6 +160,10 @@ autostart = true
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/StartTimer"]
 stream = ExtResource("3_as7pr")
 
+[node name="TitleButtonTimer" type="Timer" parent="Game"]
+wait_time = 2.0
+one_shot = true
+
 [node name="BGM" type="AudioStreamPlayer2D" parent="Game"]
 stream = ExtResource("1_j7x83")
 volume_db = -8.0
@@ -163,8 +188,9 @@ volume_db = -0.5
 position = Vector2(111, 89)
 sprite_frames = SubResource("SpriteFrames_k2xqm")
 animation = &"break"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("8_gsmq8")
-current_hp = 1000
 
 [node name="SE" type="AudioStreamPlayer2D" parent="Game/GroupWall/Wall"]
 
@@ -202,5 +228,16 @@ offset_bottom = 17.0
 label_settings = SubResource("LabelSettings_draa8")
 horizontal_alignment = 2
 
+[node name="TitleGoButton" type="Button" parent="Game/UI"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 115.0
+offset_right = 251.0
+offset_bottom = 139.0
+theme_override_fonts/font = ExtResource("10_hysjp")
+text = "Titleに戻る"
+
 [connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="Game/TitleButtonTimer" to="Game" method="_on_title_button_timer_timeout"]
 [connection signal="animation_finished" from="Game/GroupWall/Wall" to="Game/GroupWall/Wall" method="_on_animation_finished"]
+[connection signal="pressed" from="Game/UI/TitleGoButton" to="Game" method="_on_title_go_button_pressed"]

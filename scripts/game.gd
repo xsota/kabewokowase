@@ -6,6 +6,7 @@ var score_time = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$UI/TitleGoButton.hide()
 	randomize()
 	$StartTimer.start()
 	$StartTimer/SE.play()
@@ -18,11 +19,14 @@ func _process(delta: float) -> void:
 		score_time += delta
 		$UI/ScoreTimeLabel.text = "Time: %.2f" % score_time
 		
-	if $GroupWall.get_child_count() == 0:
+	if $GroupWall.get_child_count() == 0 and is_game:
 		is_game = false
+		$TitleButtonTimer.start()
 		$BGM.stop();
 		$UI/ScoreTimeLabel.hide()
 		$UI/ResultsLabel.text = "%.2f秒で\n103万の壁たちを壊した！" % score_time
+		$TitleButtonTimer.start()
+
 
 func _input(event: InputEvent) -> void:
 	if !is_game:
@@ -62,3 +66,11 @@ func _on_start_timer_timeout() -> void:
 		$StartTimer.stop()
 		$UI/StartCountDownLabel.hide()
 		
+
+
+func _on_title_button_timer_timeout() -> void:
+	$UI/TitleGoButton.show()
+
+
+func _on_title_go_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/title.tscn")
