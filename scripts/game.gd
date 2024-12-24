@@ -43,14 +43,19 @@ func _input(event: InputEvent) -> void:
 	else:
 		$Character.play("default")
 
+
 func get_first_wall():
 	var index = $GroupWall.get_child_count()-1
 	
 	if index < 0:
 		return null
-	
-	return $GroupWall.get_children()[index]
-	
+	var w = $GroupWall.get_children()[index]
+	if null != w:
+		if w.current_hp == 0:
+			return $GroupWall.get_children()[index-1]
+		else:
+			return w
+
 
 func _on_start_timer_timeout() -> void:
 	start_count -= 1;
@@ -65,7 +70,6 @@ func _on_start_timer_timeout() -> void:
 	elif start_count == -1:
 		$StartTimer.stop()
 		$UI/StartCountDownLabel.hide()
-		
 
 
 func _on_title_button_timer_timeout() -> void:

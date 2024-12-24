@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cw7kyly4dsfm4"]
+[gd_scene load_steps=24 format=3 uid="uid://cw7kyly4dsfm4"]
 
 [ext_resource type="AudioStream" uid="uid://c8kudnv42ynk5" path="res://sounds/ドタバタ劇場.mp3" id="1_j7x83"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_jhuyf"]
@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cxjgdlntlsws" path="res://sounds/小キック.mp3" id="5_f8mp8"]
 [ext_resource type="Texture2D" uid="uid://dkk1u2kdkj8yv" path="res://images/kon-punch.png" id="5_ydh20"]
 [ext_resource type="AudioStream" uid="uid://41y1aniw82h6" path="res://sounds/小パンチ.mp3" id="6_g3dqy"]
-[ext_resource type="Script" path="res://scripts/wall.gd" id="8_gsmq8"]
-[ext_resource type="Texture2D" uid="uid://uwh5yhnqwg6h" path="res://images/block.png" id="8_vponx"]
+[ext_resource type="PackedScene" uid="uid://cp0kvrh0kac6k" path="res://scenes/wall.tscn" id="8_mydwk"]
+[ext_resource type="SpriteFrames" uid="uid://iryvqtj2pfir" path="res://scenes/wall_178.tres" id="9_n2j4q"]
+[ext_resource type="SpriteFrames" uid="uid://ciubskhl8kypo" path="res://scenes/wall_103.tres" id="9_ogx1h"]
 [ext_resource type="FontFile" uid="uid://dm5chb6thc8xh" path="res://fonts/x12y16pxMaruMonica.ttf" id="10_hysjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bw24v"]
@@ -89,111 +90,10 @@ stream_0/stream = ExtResource("5_f8mp8")
 stream_0/weight = 5.0
 stream_1/stream = ExtResource("6_g3dqy")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mirg"]
-atlas = ExtResource("8_vponx")
-region = Rect2(80, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_76mrt"]
-atlas = ExtResource("8_vponx")
-region = Rect2(160, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_01tng"]
-atlas = ExtResource("8_vponx")
-region = Rect2(240, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bmo3d"]
-atlas = ExtResource("8_vponx")
-region = Rect2(320, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bst2e"]
-atlas = ExtResource("8_vponx")
-region = Rect2(400, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubydc"]
-atlas = ExtResource("8_vponx")
-region = Rect2(480, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_itb6c"]
-atlas = ExtResource("8_vponx")
-region = Rect2(560, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0wa0"]
-atlas = ExtResource("8_vponx")
-region = Rect2(640, 0, 80, 110)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0v488"]
-atlas = ExtResource("8_vponx")
-region = Rect2(0, 0, 80, 110)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_k2xqm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8mirg")
-}],
-"loop": true,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_76mrt")
-}],
-"loop": true,
-"name": &"2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_01tng")
-}],
-"loop": true,
-"name": &"3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bmo3d")
-}],
-"loop": true,
-"name": &"4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bst2e")
-}],
-"loop": true,
-"name": &"5",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ubydc")
-}],
-"loop": true,
-"name": &"6",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_itb6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e0wa0")
-}],
-"loop": false,
-"name": &"break",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0v488")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="LabelSettings" id="LabelSettings_ogbjq"]
+font = ExtResource("10_hysjp")
+outline_size = 4
+outline_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v5npo"]
 font = ExtResource("10_hysjp")
@@ -203,11 +103,6 @@ shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_draa8"]
 font = ExtResource("10_hysjp")
-
-[sub_resource type="LabelSettings" id="LabelSettings_e7ns3"]
-font = ExtResource("10_hysjp")
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Level" type="Node2D"]
 
@@ -254,15 +149,20 @@ volume_db = -0.5
 
 [node name="GroupWall" type="Node2D" parent="Game"]
 
-[node name="Wall" type="AnimatedSprite2D" parent="Game/GroupWall"]
-position = Vector2(111, 89)
-sprite_frames = SubResource("SpriteFrames_k2xqm")
-animation = &"break"
-frame = 1
-frame_progress = 1.0
-script = ExtResource("8_gsmq8")
+[node name="Wall178" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
+position = Vector2(218, 82)
+sprite_frames = ExtResource("9_n2j4q")
+animation = &"default"
+max_hp = 10.0
 
-[node name="SE" type="AudioStreamPlayer2D" parent="Game/GroupWall/Wall"]
+[node name="Wall123" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
+position = Vector2(158, 82)
+max_hp = 10.0
+
+[node name="Wall103" parent="Game/GroupWall" instance=ExtResource("8_mydwk")]
+position = Vector2(96, 82)
+sprite_frames = ExtResource("9_ogx1h")
+max_hp = 10.0
 
 [node name="UI" type="Control" parent="Game"]
 layout_mode = 3
@@ -270,11 +170,41 @@ anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 144.0
 
+[node name="TitleGoButton" type="Button" parent="Game/UI"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 111.0
+offset_right = 254.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("10_hysjp")
+theme_override_font_sizes/font_size = 16
+flat = true
+
+[node name="Label" type="Label" parent="Game/UI/TitleGoButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Titleに戻る"
+label_settings = SubResource("LabelSettings_ogbjq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StartCountDownLabel" type="Label" parent="Game/UI"]
 top_level = true
 clip_children = 2
+layout_mode = 0
+offset_top = 43.0
 offset_right = 256.0
-offset_bottom = 144.0
+offset_bottom = 103.0
 text = "3"
 label_settings = SubResource("LabelSettings_v5npo")
 horizontal_alignment = 1
@@ -283,32 +213,23 @@ vertical_alignment = 1
 [node name="ResultsLabel" type="Label" parent="Game/UI"]
 top_level = true
 clip_children = 2
+layout_mode = 0
+offset_top = 32.0
 offset_right = 256.0
-offset_bottom = 144.0
+offset_bottom = 103.0
 label_settings = SubResource("LabelSettings_v5npo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreTimeLabel" type="Label" parent="Game/UI"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 255.0
-offset_bottom = 17.0
+offset_left = 29.0
+offset_top = 15.0
+offset_right = 282.0
+offset_bottom = 31.0
 label_settings = SubResource("LabelSettings_draa8")
 horizontal_alignment = 2
 
-[node name="TitleGoButton" type="Label" parent="Game/UI"]
-layout_mode = 0
-offset_left = 185.0
-offset_top = 115.0
-offset_right = 251.0
-offset_bottom = 139.0
-text = "Titleに戻る"
-label_settings = SubResource("LabelSettings_e7ns3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="timeout" from="Game/StartTimer" to="Game" method="_on_start_timer_timeout"]
 [connection signal="timeout" from="Game/TitleButtonTimer" to="Game" method="_on_title_button_timer_timeout"]
-[connection signal="animation_finished" from="Game/GroupWall/Wall" to="Game/GroupWall/Wall" method="_on_animation_finished"]
+[connection signal="pressed" from="Game/UI/TitleGoButton" to="Game" method="_on_title_go_button_pressed"]

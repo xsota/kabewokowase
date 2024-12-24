@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp0kvrh0kac6k"]
+
+[ext_resource type="SpriteFrames" uid="uid://bab4g0heo55gh" path="res://scenes/wall_123.tres" id="1_gi43b"]
+[ext_resource type="Script" path="res://scripts/wall.gd" id="2_6kftg"]
+
+[node name="Wall" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_gi43b")
+animation = &"1"
+script = ExtResource("2_6kftg")
+
+[node name="SE" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
